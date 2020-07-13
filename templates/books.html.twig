@@ -1,0 +1,19 @@
+{# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
+{% extends 'base.html.twig' %}
+
+{% block books %}
+
+    <h1 class="title"><u>BOOKS</u></h1>
+    <div class="contour">
+        {# BOUCLE POUR RECUPERER TOUT LES AUTHORS DE MA BASE DE DONNEE#}
+        {% for book in books %}
+            <div class="books">
+                {# DECLARATION DE LA VARIABLE "book.title" POUR RECUPERER LE TITRE DE MA BASE DE DONNEE#}
+                <a href="{{ path('book_show', {'id': book.id}) }}">
+                    <h1>{{ book.title }}</h1>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock books %}

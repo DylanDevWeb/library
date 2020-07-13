@@ -1,0 +1,28 @@
+  {# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
+{% extends 'base.html.twig' %}
+
+
+{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block authors"#}
+{% block authors %}
+    <h1 class="title"><u>AUTHORS</u></h1>
+    <div class="contour">
+        {# BOUCLE POUR RECUPERER TOUT LES AUTHORS DE MA BASE DE DONNEE#}
+        {% for author in authors %}
+            <div class="elements_authors">
+                {# DECLARATION DE LA VARIABLE "author.lastname" POUR RECUPERER LES LASTNAME DE MA BASE DE DONNEE#}
+                <a href="{{ path('author_show', {'id': author.id}) }}" >
+                <p><u>{{ author.lastname }}</u></p>
+
+                {# DECLARATION DE LA VARIABLE "author.firstname" POUR RECUPERER LES FIRSTNAME DE MA BASE DE DONNEE#}
+                <p><u>{{ author.firstname }}</u></p></a>
+
+                {# DECLARATION DE LA VARIABLE "author.birthdate" POUR RECUPERER LA DATE DE NAISSANCE DE MA BASE DE DONNEE#}
+                <p>Date naissance : {{ author.birthdate|date("d F Y") }}</p>
+
+                {# DECLARATION DE LA VARIABLE "author.birthdate" POUR RECUPERER LA DATE DE DECES DE MA BASE DE DONNEE#}
+                <p>Date décès : {{ author.deathdate|date("d F Y") }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock authors %}
