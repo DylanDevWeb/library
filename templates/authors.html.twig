@@ -2,8 +2,8 @@
 {% extends 'base.html.twig' %}
 
 
-{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block authors"#}
-{% block authors %}
+{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
+{% block content %}
     <h1 class="title"><u>AUTHORS</u></h1>
     <div class="contour">
         {# BOUCLE POUR RECUPERER TOUT LES AUTHORS DE MA BASE DE DONNEE#}
@@ -17,12 +17,12 @@
                 <p><u>{{ author.firstname }}</u></p></a>
 
                 {# DECLARATION DE LA VARIABLE "author.birthdate" POUR RECUPERER LA DATE DE NAISSANCE DE MA BASE DE DONNEE#}
-                <p>Date naissance : {{ author.birthdate|date("d F Y") }}</p>
+                <p>Né le {{ author.birthdate|date("d F Y") }}</p>
 
                 {# DECLARATION DE LA VARIABLE "author.birthdate" POUR RECUPERER LA DATE DE DECES DE MA BASE DE DONNEE#}
-                <p>Date décès : {{ author.deathdate|date("d F Y") }}</p>
+                <p>Mort le {{ author.deathdate|date("d F Y") }}</p>
             </div>
         {% endfor %}
     </div>
 
-{% endblock authors %}
+{% endblock content %}

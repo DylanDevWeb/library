@@ -1,0 +1,28 @@
+{# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
+{% extends 'base.html.twig' %}
+
+
+{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
+{% block content %}
+
+    <h2 class="titre_accueil"><u>Derniers livres</u></h2>
+    <div class="last">
+        {% for last_book in last_books %}
+            <h3 class="contour_accueil">
+                <a href="{{ path('book_show', {'id': last_book.id}) }}">{{ last_book.title }} - ({{ last_book.genre }})</a>
+            </h3>
+        {% endfor %}
+    </div>
+
+        <hr>
+
+    <h2 class="titre_accueil"><u>Derniers autheurs</u></h2>
+    <div class="last">
+        {% for last_author in last_authors %}
+            <h3 class="contour_accueil">
+                <a href="{{ path('author_show', {'id': last_author.id}) }}">{{ last_author.firstname }} - {{ last_author.lastname }}</a>
+            </h3>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

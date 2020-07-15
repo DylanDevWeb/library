@@ -32,6 +32,11 @@ class Books
      */
     private $genre;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $resume;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,5 +76,21 @@ class Books
         $this->genre = $genre;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResume()
+    {
+        return $this->resume;
+    }
+
+    /**
+     * @param mixed $resume
+     */
+    public function setResume($resume): void
+    {
+        $this->resume = $resume;
     }
 }

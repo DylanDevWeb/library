@@ -4,17 +4,18 @@
 {# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
 {% block content %}
 
-    <h1 class="title"><u>BOOKS</u></h1>
+   <h1 class="title">Les {{ 'genre' }} de ma bibliothèque : </h1>
     <div class="contour">
-        {# BOUCLE POUR RECUPERER TOUT LES AUTHORS DE MA BASE DE DONNEE#}
-        {% for book in books %}
+        {%  for book in books %}
             <div class="books">
-                {# DECLARATION DE LA VARIABLE "book.title" POUR RECUPERER LE TITRE DE MA BASE DE DONNEE#}
                 <a href="{{ path('book_show', {'id': book.id}) }}">
-                    <h2>{{ book.title }}</h2>
+                    <p>Titre : {{ book.title }}</p>
+                    <p>Genre : {{ book.genre }}</p>
                 </a>
             </div>
-        {% endfor %}
+        {%  endfor %}
     </div>
+
+    <a href="{{ path('books_list') }}" class="button">Retour</a>
 
 {% endblock content %}

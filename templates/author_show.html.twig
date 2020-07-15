@@ -1,8 +1,8 @@
 {# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
 {% extends 'base.html.twig' %}
 
-{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block authors"#}
-{% block author_show %}
+{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
+{% block content %}
 
     <div class="author_show">
         {# DECLARATION DE LA VARIABLE "author.lastname" POUR RECUPERER LES LASTNAME DE MA BASE DE DONNEE#}
@@ -22,4 +22,4 @@
     </div>
     <a href="{{ path('authors_list') }}" class="button">Retour</a>
 
-{% endblock author_show %}
+{% endblock content %}

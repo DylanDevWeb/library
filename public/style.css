@@ -2,31 +2,65 @@
     margin: 0;
     padding: 0;
 }
+
+/*SECTION ACCUEIL*/
+.titre_accueil{
+    text-align: center;
+    margin: 2%;
+}
+.last{
+    margin: 5% 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.contour_accueil{
+    width: 100%;
+    padding: 4% 0;
+    margin: 0 5%;
+    text-align: center;
+    border: solid 1px black;
+    border-radius: 50px;
+    box-shadow: 15px 10px 20px 10px rgba(119, 119, 119, 0.5);
+    transition: linear 0.3s;
+}
+.contour_accueil:hover{
+    cursor: pointer;
+    transform: translateY(-5%);
+    background-color: lightblue;
+}
+
+
+
+/*SECTION HEADER FOOTER*/
 header, .footer{
+    color: white;
     width: 100%;
     height: auto;
-    padding: 5% 0;
+    padding: 1% 0;
     text-align: center;
-    background: rgb(34,193,195);
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    background: rgb(255,235,0);
+    background: linear-gradient(90deg, gray 0%, black 100%);
 }
 .footer{
     margin-left: 50%;
     transform: translateX(-50%);
-    padding-top: 5%;
-    background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
+    background: linear-gradient(0deg, black 0%, gray 100%);
 }
-.titre{
-    margin-bottom: 2%;
+.titre {
+    margin: 2%;
+}
+.title {
+    text-align: center;
+    margin: 2%;
+}
+.liens{
+    display: flex;
+    justify-content: space-around;
+    margin: 5% 0;
 }
 .lien{
     color: white;
-    margin: 5%;
-    font-size: 1.2em;
-}
-.title{
-    text-align: center;
-    margin: 2%;
 }
 .contour{
     display: flex;
@@ -45,10 +79,10 @@ header, .footer{
     width: 30%;
     height: auto;
     margin: 11px ;
-    transition: ease 1s;
+    transition: linear 0.3s;
 }
 .elements_authors:hover{
-    transform: translateY(-10%);
+    background-color: lightblue;
 }
 
 .author_show{
@@ -77,6 +111,7 @@ header, .footer{
 .books:hover{
     transform: translateY(-10%);
     cursor: pointer;
+    background-color: lightblue;
 }
 .book_show{
     border: solid 1px black;
@@ -95,4 +130,40 @@ header, .footer{
 }
 .button:hover{
     transform: scale(1.1);
+    background-color: lightblue;
+}
+
+.book_genre{
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 20%;
+    height: auto;
+    margin: 11px 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: navajowhite;
+}
+.books_search{
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    margin: 5% 0;
+    transition: ease 0.6s;
+    text-align: center;
+}
+.books_search:hover{
+    transform: translateY(-10%);
+    cursor: pointer;
+    background-color: lightblue;
+}
+.barre{
+    margin: 50px;
+}
+.search{
+    width: 30%;
+    height: auto;
+    margin: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }

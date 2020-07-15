@@ -1,0 +1,25 @@
+{# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
+{% extends 'base.html.twig' %}
+
+{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
+{% block content %}
+    <main class="search">
+        <form method="get" class="barre">
+            <label for="">Recherche :</label>
+            <input name="search" type="text">
+        </form>
+
+        {% for book in books %}
+        <div class="books_search">
+            {# DECLARATION DE LA VARIABLE "book.title" POUR RECUPERER LE TITRE DE MA BASE DE DONNEE#}
+            <a href="{{ path('book_show', {'id': book.id}) }}">
+                <h2>{{ book.title }}</h2>
+            </a>
+            <h3>{{ book.nbPages }} pages</h3>
+            <p>{{ book.resume }}</p>
+        </div>
+        {% endfor %}
+        </div>
+    </main>
+
+{% endblock content %}

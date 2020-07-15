@@ -3,12 +3,9 @@
 //PERMET D'IDENTIFIER MA CLASSE
 namespace App\Controller;
 
-//SYMFONY INSTANCIE LA CLASSE "AuthorRepository"
-use App\Repository\AuthorRepository;
-//IMPORT DU NAMESPACE POUR ABSTRACTCONTROLLER
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//IMPORT DU NAMESPACE POUR LES ROUTES
-use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\AuthorRepository;    //SYMFONY INSTANCIE LA CLASSE "AuthorRepository"
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;   //IMPORT DU NAMESPACE POUR ABSTRACTCONTROLLER
+use Symfony\Component\Routing\Annotation\Route; //IMPORT DU NAMESPACE POUR LES ROUTES
 
 //LA CLASS "AuthorController" ETEND LA CLASS "AbstractController" POUR BENEFICIER DE PLUS DE METHODES
 class AuthorController extends AbstractController{

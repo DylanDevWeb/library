@@ -1,19 +1,19 @@
 {# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
 {% extends 'base.html.twig' %}
 
-{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block book_show"#}
-{% block book_show %}
+{# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
+{% block content %}
 
     <div class="book_show">
-        {# DECLARATION DE LA VARIABLE "author.lastname" POUR RECUPERER LES LASTNAME DE MA BASE DE DONNEE#}
+        {# DECLARATION DE LA VARIABLE "book.title" POUR RECUPERER LES TITRE DE MA BASE DE DONNEE#}
         <h2>{{ book.title }}</h2>
 
-        {# DECLARATION DE LA VARIABLE "author.firstname" POUR RECUPERER LES FIRSTNAME DE MA BASE DE DONNEE#}
+        {# DECLARATION DE LA VARIABLE "book.nbPages" POUR RECUPERER LE NOMBRE DE PAGE DE MA BASE DE DONNEE#}
         <h3>{{ book.nbPages }} pages</h3>
 
-        {# DECLARATION DE LA VARIABLE "author.birthdate" POUR RECUPERER LA DATE DE NAISSANCE DE MA BASE DE DONNEE#}
+        {# DECLARATION DE LA VARIABLE "book.genre" POUR RECUPERER LE GENRE DE MA BASE DE DONNEE#}
         <p>Genre : {{ book.genre }}</p>
     </div>
     <a href="{{ path('books_list') }}" class="button">Retour</a>
 
-{% endblock book_show %}
+{% endblock content %}
