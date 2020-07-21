@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\AuthorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AuthorRepository::class)
@@ -19,16 +22,19 @@ class Author
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Ce champs est nécessaire !")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Ce champs est nécessaire !")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date(message = "Ce champs est nécessaire !")
      */
     private $birthDate;
 
@@ -39,6 +45,7 @@ class Author
 
     /**
      * @ORM\Column(type="text", length=10000, nullable=true)
+     * @Assert\NotBlank(message = "Ce champs est nécessaire !")
      */
     private $biography;
 
@@ -46,6 +53,16 @@ class Author
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $published;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Books::class, mappedBy="author")
+     */
+    private $books;
+
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -159,5 +176,41 @@ class Author
         $this->published = $published;
     }
 
+    /**
+     * @return Collection|Books[]
+     */
+    public function getBooks(): Collection
+    {
+        return $this->books;
+    }
 
+    public function addBook(Books $book): self
+    {
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBook(Books $book): self
+    {
+        if ($this->books->contains($book)) {
+            $this->books->removeElement($book);
+            // set the owning side to null (unless already changed)
+            if ($book->getAuthor() === $this) {
+                $book->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function getName()
+    {
+        return $this->firstName.' '.$this->lastName;
+    }
+    
 }

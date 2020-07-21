@@ -1,0 +1,18 @@
+{# J'ETEND LA "basse.html.twig" POUR RECUPERER LA STRUCTURE COMMUNE#}
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <h1 class="title"><u>Les {{ genre.name }}</u></h1>
+
+    <div class="contour">
+        {% for book in genre.books %}
+            <div class="books">
+                <a href="{{ path('book_show', {'id': book.id}) }}">
+                    <h2>{{ book.title }}</h2>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

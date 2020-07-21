@@ -1,0 +1,12 @@
+<ul class="niveau1">
+    <li>
+        <a href="" class="lien">GENRE</a>
+        <ul class="niveau2">
+            {% for genre in genres  %}
+
+                <li><a href="{{ path('genre', {'name': genre.name}) }}" class="lien">{{ genre.name }}</a></li>
+
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

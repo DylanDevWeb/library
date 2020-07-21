@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Administration</title>
+    <script src="https://kit.fontawesome.com/0dd8da31e8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('admin_style.css') }}">
+</head>
+<body>
+{% for message in app.flashes('sucess') %}
+
+    <h1>{{ message }}</h1>
+
+{% endfor %}
+
+    <header>
+        <h1 class="admin_title">ADMINISTRATION</h1>
+        <a href="{{ path('accueil') }}" class="lien">ACCUEIL LIBRARY</a>
+        <div class="liens">
+            <a href="{{ path('admin_authors') }}" class="lien">ADMIN AUTHOR</a>
+            <a href="{{ path('admin_books') }}" class="lien">ADMIN BOOK</a>
+        </div>
+    </header>
+
+    {% block main %}
+    {% endblock main %}
+
+
+</body>
+</html>

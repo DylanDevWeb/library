@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\BooksRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=BooksRepository::class)
@@ -19,6 +23,7 @@ class Books
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Ce champs est nécessaire !")
      */
     private $title;
 
@@ -27,56 +32,55 @@ class Books
      */
     private $nbPages;
 
+
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank(message = "Ce champs est nécessaire !")
+     */
+    private $resume;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="books")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $genre;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $resume;
+    private $author;
 
-    public function getId(): ?int
+
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle()
     {
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle($title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getNbPages(): ?int
+    public function getNbPages()
     {
         return $this->nbPages;
     }
 
-    public function setNbPages(int $nbPages): self
+    public function setNbPages($nbPages): self
     {
         $this->nbPages = $nbPages;
 
         return $this;
     }
-
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
-
-    public function setGenre(string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
+    
 
     /**
      * @return mixed
@@ -93,4 +97,29 @@ class Books
     {
         $this->resume = $resume;
     }
+
+    public function getGenre(): ?Genre
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?Genre $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
 }

@@ -2,9 +2,13 @@
 //PERMET D'IDENTIFIER MA CLASSE
 namespace App\Controller;
 
+use App\Entity\Books;
+use App\Repository\GenreRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;   //IMPORT DU NAMESPACE POUR ABSTRACTCONTROLLER
 use App\Repository\BooksRepository; //SYMFONY INSTANCIE LA CLASSE "BooksRepository"
 use Symfony\Component\HttpFoundation\Request;   //IMPORT DU NAMESPACE POUR Request
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route; //IMPORT DU NAMESPACE POUR LES ROUTES
 
 
@@ -44,21 +48,6 @@ class BookController extends AbstractController{
     /********************************************************************/
 
     /**
-     * @Route("/books/genre/{genre}", name="books_genre")  //--> ANNOTATION
-     */
-    public function BookByGenre(BooksRepository $booksRepository, $genre){
-
-        $books = $booksRepository-> findBy(['genre' => $genre]);
-        return $this->render('book_genre.html.twig', [
-            'books' => $books,
-            'genre' => $genre
-        ]);
-
-    }
-
-    /********************************************************************/
-
-    /**
      * @Route("/books/search/resume", name="books_search")  //--> ANNOTATION
      */
     //METHODE AVEC EN PARAMETRE LA CLASSE VOULUE SUIVIE D'UNE VARIABLE DANS LAQUELLE JE VEUX QUE SYMFONY INSTANCIE MA CLASSE
@@ -84,6 +73,51 @@ class BookController extends AbstractController{
         return $this->render('search.html.twig',[  //--> RENVOI HTML/TWIG, EN UTILISANT LA METHODE "RENDER"
             'books' => $books   //--> VARIABLE A UTILISER DANS LE HTML/TWIG
         ]);
-
     }
+
+
+    /********************************************************************/
+
+
+    /**
+     * @Route("/books/menu/genre/{name}", name="genre")  //--> ANNOTATION
+     */
+    public function PageGenre(BooksRepository $booksRepository, GenreRepository $genreRepository ,$name){
+
+        $genre = $genreRepository->findOneBy(['name' => $name]);
+
+        return $this->render('genre.html.twig', [
+
+            'genre' => $genre
+        ]);
+    }
+
+
+    /********************************************************************/
+
+
+    /**
+     * @Route("/books/menu/genre", name="book_genre")  //--> ANNOTATION
+     */
+    public function MenuDeroulant(BooksRepository $booksRepository, GenreRepository $genreRepository){
+
+        $genre = $genreRepository->findAll();
+
+        return $this->render('book_genre.html.twig', [
+
+            'genres' => $genre
+        ]);
+    }
+
+
+    public function listGenres(GenreRepository $genreRepository)
+    {
+        $genres = $genreRepository->findAll();
+
+        return $this->render('list_genre.html.twig', [
+            'genres' => $genres
+        ]);
+    }
+
+
 }

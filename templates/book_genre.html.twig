@@ -4,13 +4,12 @@
 {# JE DEFINIS LE CONTENU SPECIFIQUE DE MON "block content"#}
 {% block content %}
 
-   <h1 class="title">Les {{ 'genre' }} de ma bibliothèque : </h1>
-    <div class="contour">
-        {%  for book in books %}
+   <h1 class="title">Les {{ 'genres' }} de ma bibliothèque : </h1>
+    <div class="left">
+        {%  for genre in genres %}
             <div class="books">
-                <a href="{{ path('book_show', {'id': book.id}) }}">
-                    <p>Titre : {{ book.title }}</p>
-                    <p>Genre : {{ book.genre }}</p>
+                <a href="{{ path('genre', {'name': genre.name}) }}">
+                    <p>{{ genre.name }}</p>
                 </a>
             </div>
         {%  endfor %}

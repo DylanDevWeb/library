@@ -1,0 +1,35 @@
+{% include 'admin/admin_base.html.twig' %}
+
+{% block main %}
+
+    <h1 class="title"><u>Modifier le livre</u></h1>
+
+    {{ form_start(bookform) }}
+    <div class="centre">
+        {{ form_label(bookform.title) }}
+        {{ form_widget(bookform.title, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(bookform.title) }}
+
+        {{ form_label(bookform.nbPages) }}
+        {{ form_widget(bookform.nbPages, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(bookform.nbPages) }}
+
+        {{ form_label(bookform.genre) }}
+        {{ form_widget(bookform.genre, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(bookform.genre) }}
+
+
+        {{ form_label(bookform.resume) }}
+        {{ form_widget(bookform.resume, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(bookform.resume) }}
+
+        {{ form_label(bookform.author) }}
+        {{ form_widget(bookform.author, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(bookform.author) }}
+
+
+        {{ form_widget(bookform.submit, {'attr': {'class': 'input_submit'}}) }}
+    </div>
+    {{ form_end(bookform) }}
+
+{% endblock main %}

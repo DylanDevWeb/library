@@ -1,0 +1,40 @@
+{% include 'admin/admin_base.html.twig' %}
+
+{% block main %}
+
+    <h1 class="title"><u>Modifier l'auteur</u></h1>
+
+    {{ form_start(authorform) }}
+    <div class="centre">
+        {{ form_label(authorform.firstName) }}
+        {{ form_widget(authorform.firstName, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(authorform.firstName) }}
+
+        {{ form_label(authorform.lastName) }}
+        {{ form_widget(authorform.lastName, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(authorform.lastName) }}
+
+        {{ form_label(authorform.birthDate) }}
+        {{ form_widget(authorform.birthDate, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(authorform.birthDate) }}
+
+
+        {{ form_label(authorform.deathDate) }}
+        {{ form_widget(authorform.deathDate, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(authorform.deathDate) }}
+
+        {{ form_label(authorform.biography) }}
+        {{ form_widget(authorform.biography, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(authorform.biography) }}
+
+        {{ form_label(authorform.published) }}
+        {{ form_widget(authorform.published, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(authorform.published) }}
+
+
+        {{ form_widget(authorform.submit, {'attr': {'class': 'input_submit'}}) }}
+    </div>
+    {{ form_end(authorform) }}
+
+
+{% endblock main %}

@@ -9,7 +9,7 @@
     <div class="last">
         {% for last_book in last_books %}
             <h3 class="contour_accueil">
-                <a href="{{ path('book_show', {'id': last_book.id}) }}">{{ last_book.title }} - ({{ last_book.genre }})</a>
+                <a href="{{ path('book_show', {'id': last_book.id}) }}">{{ last_book.title }} - ({{ last_book.genre.name }})</a>
             </h3>
         {% endfor %}
     </div>
